@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout" >
+<head>
+    <meta charset="UTF-8">
+    <title>ressource</title>
+</head>
+<body>
+<div  layout:fragment="content" class="container">
+
+    <div class="container">
+        <div class="card border-primary mt-5 ">
+            <div class="card-header bg-primary">
+                Confirmation
+            </div>
+            <div class="card-body">
+                <h4>Client :</h4>
+                    <div >
+                        <label > Code : </label>
+                        <label  th:text="${compte.client.code}">  </label>
+                    </div> 
+                    <div >
+                        <label > Nom : </label>
+                        <label  th:text="${compte.client.nom}">  </label>
+                    </div> 
+                    <div >
+                        <label > Email : </label>
+                        <label  th:text="${compte.client.email}">  </label>
+                    </div>
+                <h4>Compte :</h4>
+                <div >
+                    <label > Code Compte : </label>
+                    <label  th:text="${compte.codeCompte}">  </label>
+                </div>
+                <div >
+                    <label > Date Creation : </label>
+                    <label  th:text="${compte.dateCreation}">  </label>
+                </div>
+                <div >
+                    <label > Solde : </label>
+                    <label  th:text="${compte.solde}">  </label>
+                </div>
+                <div >
+                    <label > Type Compte : </label>
+                    <label  th:text="${compte.class.getSimpleName()}">  </label>
+                </div>
+                <div >
+                    <div th:if="${compte.class.getSimpleName()}==CompteCourant">
+                        <label > Decouvert : </label>
+                        <label  th:text="${compte.decouvert}">  </label>
+                    </div>
+                    <div th:if="${compte.class.getSimpleName()}==CompteEpargne">
+                        <label > Taux : </label>
+                        <label  th:text="${compte.taux}">  </label>
+                    </div>
+                </div>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active mr-4" th:href="@{/addCompte}">Add Again</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/chercherCompte}">List Comptes</a>
+                    </li>
+                </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

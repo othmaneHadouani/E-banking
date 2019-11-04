@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout" >
+<head>
+    <meta charset="UTF-8">
+    <title>ressource</title>
+</head>
+<body>
+<div  layout:fragment="content" class="container">
+
+    <div class="container">
+        <div class="card border-primary mt-5 ">
+            <div class="card-header bg-primary">
+                Confirmation
+            </div>
+            <div class="card-body">
+                    <div >
+                        <label > Code : </label>
+                        <label  th:text="${client.code}">  </label>
+                    </div> 
+                    <div >
+                        <label > Nom : </label>
+                        <label  th:text="${client.nom}">  </label>
+                    </div> 
+                    <div >
+                        <label > Email : </label>
+                        <label  th:text="${client.email}">  </label>
+                    </div>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active mr-4" th:href="@{/addClient}">Add Again</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/chercherClients}">List Client</a>
+                    </li>
+                </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

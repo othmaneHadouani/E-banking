@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout" >
+<head>
+    <meta charset="UTF-8">
+    <title>reclamation</title>
+</head>
+<body>
+<div  layout:fragment="content" class="container">
+
+        <div class="card  mt-5 border-primary">
+            <div class="card-header bg-primary">
+               Modifier Client
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <form th:action=" @{/saveClient}" th:method="POST">
+                        <div  class="form-group">
+                            <label > Code Client </label>
+                            <input class="form-control" type="text" name="code" th:value="${client.code}" readonly>
+                            <span class="text-danger" th:errors="${client.code}"></span>
+                        </div>
+                        <div  class="form-group">
+                            <label >Nom </label>
+                            <input class="form-control" type="text" name="nom" th:value="${client.nom} " placeholder="Enter le Nom">
+                            <span class="text-danger" th:errors="${client.nom}"></span>
+                        </div>
+                        <div  class="form-group">
+                            <label >Email</label>
+                            <input class="form-control" type="email" name="email" th:value="${client.email} " placeholder="Enter le Nom">
+                            <span class="text-danger" th:errors="${client.email}"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary" >Modifier</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+</div>
+
+</body>
+</html>

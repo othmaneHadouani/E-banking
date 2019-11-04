@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout" >
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Not found</title>
+</head>
+<body>
+<div  layout:fragment="content" class="container">
+    <div class="col-md-6 mt-5 mx-auto">
+    <div class="card border-primary ">
+        <div class="card-header bg-primary"> Probléme d'autorisation</div>
+
+        <div class="card-body pt-3 pb-3 px-3" th:class="text-danger">
+            <div>
+            vous n'avez pass le droit d acceder a cette ressource
+            </div>
+        </div>
+
+    </div>
+    </div>
+</div>
+
+</div>
+</body>
+</html>

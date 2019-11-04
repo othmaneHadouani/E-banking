@@ -1,0 +1,60 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion Des comptes</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/css.css" th:href="@{css/css.css}"/>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+
+
+    <div class="container col-md-10 mt-5">
+        <div class="card border-primary ">
+            <div class="card-header bg-primary">comptes</div>
+            <div class="card-body">
+                <table class="table table-striped ">
+                    <thead>
+                    <tr>
+                        <th>Code </th>
+                        <th>Solde </th>
+                        <th>Date Création </th>
+                        <th>Client</th>
+                        <th>Type </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr scope="row" th:each=" compte:${comptes}">
+                        <td th:text="${compte.codeCompte}"></td>
+                        <td th:text="${compte.solde}"></td>
+                        <td th:text="${compte.dateCreation}"></td>
+                        <td th:text="${compte.client.nom}"></td>
+                        <td th:text="${compte.class.getSimpleName()}"></td>
+
+                        <td><a th:href="@{/deleteCompte(code =${compte.codeCompte},page=${pageCurrent})}"
+                               onclick="confirm('Ete vous sure')">Remove</a></td>
+                        <td><a th:href="@{/formEditCmpte(code=${compte.codeCompte})}">Edit</a></td>
+                        <td><a th:href="@{/consulterCompte(codeCompte=${compte.codeCompte})}">Details</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <div>
+                    <ul class="pagination">
+                        <li th:class="${pageCurrent}==${status.index}?'active':''" th:each="pa,status:${pages}">
+                            <a class="page-link" th:href="@{chercherCompte(size=${size},page=${status.index})}"
+                               th:text="${status.index}"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../static/js/main.js" th:src="@{js/main.js}"></script>
+</body>
+</html>

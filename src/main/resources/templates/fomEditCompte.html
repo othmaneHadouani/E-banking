@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout" >
+<head>
+    <meta charset="UTF-8">
+    <title>reclamation</title>
+</head>
+<body>
+<div  layout:fragment="content" class="container">
+
+    <div class="card mt-5 border-primary">
+        <div class="card-header bg-primary">
+            Modifier Compte
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <form th:action=" @{/saveCompte}"   method="post">
+                   <div  class="form-group"   >
+                         <label > Code </label>
+                         <input class="form-control" type="text" name="codeCompte" th:value="${compte.codeCompte}" readonly>
+                         <span class="text-danger" th:errors="${compte.codeCompte}"></span>
+                     </div>
+                    <div class="form-group">
+                        <label>Client : </label>
+                        <select readonly>
+                            <option th:each="client :${clients}"  th:text="${client.nom}" th:value="${client}" ></option>
+                        </select>
+                    </div>
+                    <div  class="form-group">
+                        <label >Solde</label>
+                        <input class="form-control" type="text" name="solde" th:value="${compte.solde}" placeholder="Enter Salaire">
+                        <span class="text-danger" ></span>
+                    </div>
+                    <div class="form-group"  id="decouvert" style="display:none" th:if="${compte.class.getSimpleName()}=='decouvert'">
+                        <label >Decouvert : </label>
+                        <input class="form-control" type="text" th:value="${compte.decouvert}" name="decouvert"/>
+                    </div>
+                    <div class="form-group"  id="taux" style="display:none" th:if="${compte.class.getSimpleName()}=='taux'">
+                        <label >Taux : </label>
+                        <input class="form-control" type="text" th:value="${compte.taux}" name="decouvert"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary" >Modifier</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+</html>
